@@ -8,13 +8,10 @@ class OurMachine(nn.Module):
     def __init__(self):
         super().__init__()
         self.resnet = resnet101(weights = None)
-        # number_input = self.resnet.fc.out_features
-        # self.resnet.fc = nn.Sequential(
-        #     nn.Linear(number_input, 256)
-        # )
-        #
-        # for param in self.resnet.layer1.parameters():
-        #     param.requires_grad = False
+        number_input = self.resnet.fc.in_features
+        self.resnet.fc = nn.Sequential(
+            nn.Linear(number_input, 10)
+        )
 
     def forward(self, x):
         x = self.resnet(x)

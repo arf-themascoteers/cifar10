@@ -11,8 +11,7 @@ class DatasetManager:
     def __init__(self, train=True):
         torch.manual_seed(1)
         transform = transforms.Compose([
-            transforms.ToTensor(),
-            transforms.Resize((224,224)),
+            transforms.ToTensor()
         ])
         self.dataset = datasets.CIFAR10(root="./data", train=train, transform=transform, download=True)
 
