@@ -1,14 +1,13 @@
 import torch
 from dataset_manager import DatasetManager
 from torch.utils.data import DataLoader
-from sklearn.metrics import r2_score
 
 
-def test(device):
+def test(device, name):
     batch_size = 1000
     cid = DatasetManager(train=False).get_ds()
     dataloader = DataLoader(cid, batch_size=batch_size, shuffle=True)
-    model = torch.load("models/cnn_trans.h5")
+    model = torch.load(f"models/{name}.h5")
     model.eval()
     model.to(device)
     correct = 0
@@ -32,7 +31,6 @@ def test(device):
             pred_ys.append(a_y[0].detach().cpu().numpy())
 
     print(f'Total:{total}, Correct:{correct}, Accuracy:{correct/total*100:.2f}')
-
 
 
 if __name__ == "__main__":

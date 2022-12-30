@@ -1,13 +1,12 @@
 import torch.nn as nn
 import torch.nn.functional as F
-import torchvision
-from torchvision.models import resnet101, ResNet101_Weights
+import antialiased_cnns
 
 
-class OurMachine(nn.Module):
+class MBP(nn.Module):
     def __init__(self):
         super().__init__()
-        self.resnet = resnet101(weights = None)
+        self.resnet = antialiased_cnns.resnet101(pretrained=False)
         number_input = self.resnet.fc.in_features
         self.resnet.fc = nn.Sequential(
             nn.Linear(number_input, 10)

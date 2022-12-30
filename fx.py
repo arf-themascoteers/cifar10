@@ -1,6 +1,6 @@
 import torch
 from torchvision.models.feature_extraction import get_graph_node_names, create_feature_extractor
-import our_machine
+import resnet
 from dataset_manager import DatasetManager
 from torch.utils.data import DataLoader
 from matplotlib import pyplot as plt
@@ -9,7 +9,7 @@ import cv2
 
 def explore(device):
     cid = DatasetManager(train=False).get_ds()
-    model = our_machine.OurMachine()#torch.load("models/cnn_trans.h5")
+    model = our_machine.ResNet()#torch.load("models/cnn_trans.h5")
     model.eval()
     model.to(device)
     nodes, _ = get_graph_node_names(model)

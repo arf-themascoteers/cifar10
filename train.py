@@ -1,17 +1,13 @@
 import torch
 import torch.nn.functional as F
 from dataset_manager import DatasetManager
-import torchvision
-import torch.nn as nn
 from torch.utils.data import DataLoader
-from our_machine import OurMachine
 
 
-def train(device):
+def train(device, model, name):
     batch_size = 1000
     cid = DatasetManager(train=True).get_ds()
     dataloader = DataLoader(cid, batch_size=batch_size, shuffle=True)
-    model = OurMachine()
     model.train()
     model.to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-5)
@@ -32,7 +28,7 @@ def train(device):
             batch_number += 1
             print(f'Epoch:{epoch + 1} (of {num_epochs}), Batch: {batch_number} of ({n_batches}), Loss:{loss.item():.4f}')
 
-    torch.save(model, 'models/cnn_trans.h5')
+    torch.save(model, f'models/{name}.h5')
 
 
 if __name__ == "__main__":
