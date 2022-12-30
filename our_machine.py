@@ -7,7 +7,7 @@ from torchvision.models import resnet101, ResNet101_Weights
 class OurMachine(nn.Module):
     def __init__(self):
         super().__init__()
-        self.resnet = resnet101(weights = ResNet101_Weights.IMAGENET1K_V2)
+        self.resnet = resnet101(weights = None)
         # number_input = self.resnet.fc.out_features
         # self.resnet.fc = nn.Sequential(
         #     nn.Linear(number_input, 256)

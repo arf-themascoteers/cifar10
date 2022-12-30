@@ -14,12 +14,7 @@ class DatasetManager:
             transforms.ToTensor(),
             transforms.Resize((224,224)),
         ])
-        parent_folder = r"D:\downloads\imagenet-mini"
-        child_folder = "train"
-        if not train:
-            child_folder = "val"
-        path = os.path.join(parent_folder, child_folder)
-        self.dataset = ImageFolder(root=path, transform=transform)
+        self.dataset = datasets.CIFAR10(root="./data", train=train, transform=transform, download=True)
 
     def get_ds(self):
         return self.dataset
