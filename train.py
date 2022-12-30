@@ -8,14 +8,14 @@ from our_machine import OurMachine
 
 
 def train(device):
-    batch_size = 100
+    batch_size = 1000
     cid = DatasetManager(train=True).get_ds()
     dataloader = DataLoader(cid, batch_size=batch_size, shuffle=True)
     model = OurMachine()
     model.train()
     model.to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-5)
-    num_epochs = 3
+    num_epochs = 20
     n_batches = int(len(cid)/batch_size) + 1
     batch_number = 0
     loss = None

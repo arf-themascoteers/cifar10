@@ -5,7 +5,7 @@ from sklearn.metrics import r2_score
 
 
 def test(device):
-    batch_size = 100
+    batch_size = 1000
     cid = DatasetManager(train=False).get_ds()
     dataloader = DataLoader(cid, batch_size=batch_size, shuffle=True)
     model = torch.load("models/cnn_trans.h5")
@@ -28,11 +28,11 @@ def test(device):
         for a_y in y:
             true_ys.append(a_y.detach().cpu().numpy())
 
-        for a_y in pred_ys:
-            pred_ys.append(a_y.detach().cpu().numpy())
+        for a_y in pred:
+            pred_ys.append(a_y[0].detach().cpu().numpy())
 
     print(f'Total:{total}, Correct:{correct}, Accuracy:{correct/total*100:.2f}')
-    print(r2_score(true_ys, pred_ys))
+
 
 
 if __name__ == "__main__":
