@@ -1,6 +1,6 @@
 import torch
 from torchvision.models.feature_extraction import get_graph_node_names, create_feature_extractor
-import resnet
+import resnet_101_cifar
 from dataset_manager import DatasetManager
 from torch.utils.data import DataLoader
 from matplotlib import pyplot as plt

@@ -3,15 +3,14 @@ import torch
 import torchvision
 from torchvision.models.resnet import Bottleneck
 from torch import flatten
-import antialiased_cnns
 
-class MBP2(torchvision.models.ResNet):
+
+class ResNet101_CIFAR(torchvision.models.ResNet):
     def __init__(self):
         super().__init__(Bottleneck, [3, 4, 23, 3])
         self.fc = torch.nn.Linear(1024, 10)
 
     def _forward_impl(self, x: Tensor) -> Tensor:
-        # See note [TorchScript super()]
         x = self.conv1(x)
         x = self.bn1(x)
         x = self.relu(x)
@@ -30,8 +29,7 @@ class MBP2(torchvision.models.ResNet):
 
 
 if __name__ == "__main__":
-    model = MBP2()
-    #model = torchvision.models.resnet.resnet101()
-    torch = torch.randn((1,3,224,224))
+    model = ResNet101_CIFAR()
+    torch = torch.randn((1,3,32,32))
     out = model(torch)
     print(out.shape)
