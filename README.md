@@ -19,3 +19,4 @@ Our Network : fx_ours.py
 
 ==========
 ResNet: Total:60000, Correct:25215, Accuracy:42.03
+MBP: Total:60000, Correct:32277, Accuracy:53.79
