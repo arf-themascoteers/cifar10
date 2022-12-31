@@ -1,7 +1,7 @@
 import torch
 from torchvision.models.feature_extraction import get_graph_node_names, create_feature_extractor
 import resnet_101_cifar
-from dataset_manager import DatasetManager
+from cifar import Cifar
 from torch.utils.data import DataLoader
 from matplotlib import pyplot as plt
 import cv2
@@ -12,7 +12,7 @@ import resnet_101_cifar
 
 
 def explore(device):
-    cid = DatasetManager(train=False).get_ds()
+    cid = Cifar(train=False).get_ds()
     model = antialiased_cnns.resnet101(pretrained=False)
     model.layer2 = nn.Sequential(
         model.layer2,

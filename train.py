@@ -1,12 +1,12 @@
 import torch
 import torch.nn.functional as F
-from dataset_manager import DatasetManager
+from cifar import Cifar
 from torch.utils.data import DataLoader
 
 
 def train(device, model, name):
     batch_size = 1000
-    cid = DatasetManager(train=True).get_ds()
+    cid = Cifar(train=True)
     dataloader = DataLoader(cid, batch_size=batch_size, shuffle=True)
     model.train()
     model.to(device)

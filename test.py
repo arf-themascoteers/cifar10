@@ -1,11 +1,11 @@
 import torch
-from dataset_manager import DatasetManager
+from cifar import Cifar
 from torch.utils.data import DataLoader
 
 
 def test(device, name):
     batch_size = 100
-    cid = DatasetManager(train=False).get_ds()
+    cid = Cifar(train=False)
     dataloader = DataLoader(cid, batch_size=batch_size, shuffle=True)
     model = torch.load(f"models/{name}.h5")
     model.eval()
