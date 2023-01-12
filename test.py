@@ -4,7 +4,7 @@ from torch.utils.data import DataLoader
 
 
 def test(device, name):
-    batch_size = 100
+    batch_size = 1
     cid = Cifar(train=False)
     dataloader = DataLoader(cid, batch_size=batch_size, shuffle=True)
     model = torch.load(f"models/{name}.h5")

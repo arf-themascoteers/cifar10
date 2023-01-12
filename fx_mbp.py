@@ -1,19 +1,19 @@
 import torch
 from torchvision.models.feature_extraction import get_graph_node_names, create_feature_extractor
-import resnet_101_cifar
+import model_resnet
 from cifar import Cifar
 from torch.utils.data import DataLoader
 from matplotlib import pyplot as plt
 import cv2
 import antialiased_cnns
 import torch.nn as nn
-import mbp
-import mbp
+import model_mbp
+import model_mbp
 
 
 def explore(device):
     cid = Cifar(train=False)
-    model = torch.load(f"models/mbp.h5")
+    model = torch.load(f"models/back/mbp.h5")
     model.eval()
     model.to(device)
     x = cid[100][0]

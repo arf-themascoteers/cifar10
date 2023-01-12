@@ -6,7 +6,7 @@ from antialiased_cnns import ResNet
 class MBP(ResNet):
     def __init__(self):
         super().__init__(Bottleneck, [3, 4, 23, 3], filter_size=4)
-        self.fc = torch.nn.Linear(1024, 10)
+        self.fc = torch.nn.Linear(1024, 2)
 
     def forward(self, x):
         x = self.conv1(x)

@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader
 
 
 def train(device, model, name):
-    batch_size = 1000
+    batch_size = 15
     cid = Cifar(train=True)
     dataloader = DataLoader(cid, batch_size=batch_size, shuffle=True)
     model.train()
