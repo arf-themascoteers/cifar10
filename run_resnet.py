@@ -10,7 +10,7 @@ if __name__ == "__main__":
     print("Training started...")
     model = ResNet101_CIFAR()
     name = "resnet"
-    train.train(device, model, name)
+    #train.train(device, model, name)
 
     print("Testing started...")
     test.test(device, name)

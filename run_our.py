@@ -10,7 +10,7 @@ if __name__ == "__main__":
     print("Training started...")
     model = OurNet()
     name = "our"
-    train.train(device, model, name)
+    #train.train(device, model, name)
 
     print("Testing started...")
     test.test(device, name)
